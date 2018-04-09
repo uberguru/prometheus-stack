@@ -5,8 +5,8 @@ services:
   prometheus-server:
     build:
       context: prometheus-server/
-    #volumes:
-    #  - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    volumes:
+    - prometheus:/prometheus
     ports:
       - "9090:9090"
     networks:
