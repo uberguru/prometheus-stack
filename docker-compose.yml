@@ -38,6 +38,14 @@ services:
     networks:
       - prometheus
 
+  blackbox:
+    build:
+      context: blackbox/
+    ports:
+      - "9115:9115"
+    networks:
+      - prometheus
+  
 networks:
   prometheus:
     driver: bridge
