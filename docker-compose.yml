@@ -56,17 +56,23 @@ services:
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
     ports:
-      - 9101:8080
+      - 9091:8080
     networks:
       - prometheus
     restart: always
-    deploy:
-      mode: global
+    #deploy:
+    #  mode: global
 
-
-
-
-
+  grafana:
+    build:
+      context: grafana/
+    ports:
+      - 9092:3000
+    networks:
+      - prometheus
+    restart: always
+    #deploy:
+    #  mode: global
   
 networks:
   prometheus:
