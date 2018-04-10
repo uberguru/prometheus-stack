@@ -45,6 +45,28 @@ services:
       - "9115:9115"
     networks:
       - prometheus
+
+# if you have move the docker path then just map your path to /var/lib/docker in the container. 
+
+  cadvisor:
+    image: google/cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    ports:
+      - 9101:8080
+    networks:
+      - prometheus
+    restart: always
+    deploy:
+      mode: global
+
+
+
+
+
   
 networks:
   prometheus:
