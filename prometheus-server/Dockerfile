@@ -18,7 +18,7 @@ RUN tar -xvzf prometheus-$PROM_VERSION.linux-amd64.tar.gz -C /opt/ && rm prometh
 
 #Add your configuration
 ADD prometheus.yml /opt/prometheus/prometheus.yml
-
+ADD alert.rules /opt/prometheus/alert.rules
 #change permissions
 USER root
 RUN chown prometheus:prometheus -R /opt/prometheus
